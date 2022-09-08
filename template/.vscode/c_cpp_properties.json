@@ -1,0 +1,42 @@
+//
+// !!! WARNING !!! AUTO-GENERATED FILE!
+// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
+// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
+//
+{
+    "configurations": [
+        {
+            "name": "PlatformIO",
+            "includePath": [
+                "/home/ctxz/dev/STM8S103F3-Sandbox/template/include",
+                "/home/ctxz/dev/STM8S103F3-Sandbox/template/src",
+                "/home/ctxz/.platformio/packages/framework-ststm8spl/Libraries/STM8S_StdPeriph_Driver/inc",
+                ""
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "path": [
+                    "/home/ctxz/dev/STM8S103F3-Sandbox/template/include",
+                    "/home/ctxz/dev/STM8S103F3-Sandbox/template/src",
+                    "/home/ctxz/.platformio/packages/framework-ststm8spl/Libraries/STM8S_StdPeriph_Driver/inc",
+                    ""
+                ]
+            },
+            "defines": [
+                "F_CPU=16000000L",
+                "PLATFORMIO=60104",
+                "STM8S_BLUE",
+                "STM8S103",
+                "USE_STDPERIPH_DRIVER",
+                "USE_STDINT",
+                ""
+            ],
+            "compilerPath": "/home/ctxz/.platformio/packages/toolchain-sdcc/bin/sdcc",
+            "compilerArgs": [
+                "-mstm8",
+                ""
+            ]
+        }
+    ],
+    "version": 4
+}
