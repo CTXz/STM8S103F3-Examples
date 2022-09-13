@@ -1,3 +1,5 @@
+// Source: https://github.com/platformio/platform-ststm8/tree/master/examples
+
 /**
   ******************************************************************************
   * @file     stm8s_conf.h

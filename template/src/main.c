@@ -17,7 +17,11 @@
  * Description: Template main file for STM8S103F3P6 PlatformIO projects
  */
 
+// PlatformIO
 #include <stm8s.h>
+
+// include/
+#include <stm8s_it.h>
 
 // Main routine
 void main(void)
