@@ -1,0 +1,3 @@
+[submodule "STM8S103F3-PlatformIO-Template"]
+	path = STM8S103F3-PlatformIO-Template
+	url = https://github.com/CTXz/STM8S103F3-PlatformIO-Template
