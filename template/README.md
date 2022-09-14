@@ -5,7 +5,7 @@ The following directory provides a template project to quickly get started with 
 ## Table of Contents <!-- omit in toc -->
 
 - [Getting Started: stm8_conf.h](#getting-started-stm8_confh)
-- [Prepping the Interrupts: stm8s_it.c/stm8s_it.h](#prepping-the-interrupts-stm8s_itcstm8s_ith)
+- [Prepping the interrupts: stm8s_it.c/stm8s_it.h](#prepping-the-interrupts-stm8s_itcstm8s_ith)
 	- [A technical note on the interrupt handlers](#a-technical-note-on-the-interrupt-handlers)
 - [What's next?](#whats-next)
 
@@ -39,7 +39,7 @@ Some modules may be greyed out. Those are modules that are not supported by the 
 > For example, the `stm8s_timer4.h` module is not supported by the STM8S103F3 (as it only has two timers) yet it is not greyed out in the `stm8_conf.h` file.
 > To avoid confusion, it is highly recommended selecting the STM8S103F3 chip in the STM8CubeMX software to see which peripherals are actually supported.
 
-## Prepping the Interrupts: stm8s_it.c/stm8s_it.h
+## Prepping the interrupts: stm8s_it.c/stm8s_it.h
 
 The file `stm8s_it.c` and `stm8s_it.h` are files that declare and define IRQ handlers. The `stm8s_it.h` header contains
 the necessary IRQ handler prototypes and links them to their appropriate interrupt vectors. The `stm8s_it.c` file contains the
@@ -53,10 +53,10 @@ included in your main file.
 > **Note:** Should you not be require interrupts throughout your projects, `stm8s_it.h` and `stm8s_it.c` may be omitted. 
 > That being said, it does not harm to keep them as they will barely take up any program space.
 
-As an example, suppose we have a LED connected to pin PB5 (Such as the built-in LED on the generic blue STM8S103F3P6 breakout boards). We also
-have a button connected to any pin on PORTD, with the internal pull-up resistor enabled. For the sake of simplicity, we will reverve the full PORTD for the button so that we must not test which pin was toggled.
+As an example, suppose we have a LED connected to pin `PB5` (Such as the built-in LED on the generic blue STM8S103F3P6 breakout boards). We also
+have a button connected to any pin on `PORTD`, with the internal pull-up resistor enabled. For the sake of simplicity, we will reserve the full `PORTD` for the button so that we must not test which pin was toggled.
 
-Now we wish to toggle the LED whenever the button is released (rising edge since we have the internal pull-up resistor enabled). 
+Now we wish to toggle the LED whenever the button is released (that is, on rising edge since we have the internal pull-up resistor enabled). 
 
 We begin by including the `stm8s_exti.h` module in our `stm8_conf.h` file. Uncomment the following line inside `stm8_conf.h`:
 
