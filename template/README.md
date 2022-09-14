@@ -25,7 +25,7 @@ To name a few:
 [This website](https://documentation.help/STM8S/) provides a somewhat messy reference for the STM8S standard peripheral library modules.
 Alternatively, you can opt to browse through the headers yourself (For ex. [here](https://github.com/bschwand/STM8-SPL-SDCC/tree/master/Libraries/STM8S_StdPeriph_Driver/inc))
 
-> Note: It is required to include the `stm8_conf.h` header file within the `src/` directory of your project, else the compiler will
+> **Note:** It is required to include the `stm8_conf.h` header file within the `src/` directory of your project, else the compiler will
 > complain. Placing the file in the `include/` directory will not work!
 
 Depending on the project, you must uncomment the necessary modules you need in `stm8_conf.h`. For example, if you want to use the GPIO functions, you
@@ -35,7 +35,7 @@ must uncomment the line:
 
 Some modules may be greyed out. Those are modules that are not supported by the STM8S103F3. As an example, the `stm8s_uart2.h` module is not supported by the STM8S103F3.
 
-> Note: Whether intentional or not, some modules that are not supported by the STM8S103F3 may not be greyed out in the `stm8_conf.h` file.
+> **Note:** Whether intentional or not, some modules that are not supported by the STM8S103F3 may not be greyed out in the `stm8_conf.h` file.
 > For example, the `stm8s_timer4.h` module is not supported by the STM8S103F3 (as it only has two timers) yet it is not greyed out in the `stm8_conf.h` file.
 > To avoid confusion, it is highly recommended selecting the STM8S103F3 chip in the STM8CubeMX software to see which peripherals are actually supported.
 
@@ -48,7 +48,10 @@ user defined code for the IRQ handlers.
 To put it simply, the `stm8s_it.c` file is where you will write your interrupt handlers. The `stm8s_it.h` remains untouched and must simply be
 included in your main file.
 
-> Note: Not including the `stm8s_it.h` header file in your main file will result in the interrupt handlers not being called!
+> **Note:** Not including the `stm8s_it.h` header file in your main file will result in the interrupt handlers not being called!
+
+> **Note:** Should you not be require interrupts throughout your projects, `stm8s_it.h` and `stm8s_it.c` may be omitted. 
+> That being said, it does not harm to keep them as they will barely take up any program space.
 
 As an example, suppose we have a LED connected to pin PB5 (Such as the built-in LED on the generic blue STM8S103F3P6 breakout boards). We also
 have a button connected to any pin on PORTD, with the internal pull-up resistor enabled. For the sake of simplicity, we will reverve the full PORTD for the button so that we must not test which pin was toggled.
