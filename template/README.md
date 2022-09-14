@@ -1,6 +1,13 @@
-# Template Project
+# Template Project <!-- omit in toc -->
 
 The following directory provides a template project to quickly get started with STM8S103F3 development in platformio.
+
+## Table of Contents <!-- omit in toc -->
+
+- [Getting Started: stm8_conf.h](#getting-started-stm8_confh)
+- [Prepping the Interrupts: stm8s_it.c/stm8s_it.h](#prepping-the-interrupts-stm8s_itcstm8s_ith)
+	- [A technical note on the interrupt handlers](#a-technical-note-on-the-interrupt-handlers)
+- [What's next?](#whats-next)
 
 ## Getting Started: stm8_conf.h
 
