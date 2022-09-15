@@ -1,0 +1,8 @@
+{
+	"files.associations": {
+		"stm8s_gpio.h": "c",
+		"stm8s_it.h": "c",
+		"pins.h": "c",
+		"stm8s.h": "c"
+	}
+}
