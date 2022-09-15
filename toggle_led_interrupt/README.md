@@ -33,7 +33,7 @@ Since this example makes use of GPIOs and external interrupts, we must uncomment
 
 ### Pins: [src/pin.h](include/pins.h)
 
-The [pins.h](include/pins.h) header defines some preprocessors to address the button and LED GPIOs in more readable manner.
+The [`pins.h`](include/pins.h) header defines some preprocessors to address the button and LED GPIOs in more readable manner.
 
 ```c
 // Built-in LED
@@ -69,7 +69,7 @@ Once the external interrupt is triggered, we toggle the built-in LED on and off 
 
 ### Main: [src/main.c](src/main.c)
 
-The main function is responsible for setting up the GPIOs and external interrupts.
+The `main` function is responsible for setting up the GPIOs and external interrupts.
 
 ```c
 void main(void)
