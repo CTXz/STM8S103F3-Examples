@@ -31,6 +31,9 @@ Since this example makes use of GPIOs, we must uncomment the GPIO module in the 
 The `main` function initializes the GPIOs for the built-in LED, which is connected to pin `B5`, and the push button, which is connected to pin `D3`:
 
 ```c
+// Main routine
+void main(void)
+{	
 	// Initialize GPIOs
 	GPIO_Init(BTN_PORT, BTN_PIN, GPIO_MODE_IN_PU_NO_IT);
 	GPIO_Init(LED_BUILTIN_PORT, LED_BUILTIN_PIN GPIO_MODE_OUT_PP_LOW_FAST); // Built-in LED, Output, Push Pull, Low
@@ -51,6 +54,7 @@ The `main` function then enters an infinite loop, where it reads the state of th
 			GPIO_WriteLow(LED_BUILTIN_PORT, LED_BUILTIN_PIN); // Turn on LED
 		}
 	}
+}
 ```
 
 We do so by reading the state of the button pin using the `GPIO_ReadInputPin` function, and setting the state of the LED pin using the `GPIO_WriteHigh` and `GPIO_WriteLow` functions.
