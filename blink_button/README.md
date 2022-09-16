@@ -4,6 +4,11 @@ The following example displays the state of a button on the built in LED of this
 
 ## Table of Contents <!-- omit in toc -->
 
+- [Blink Button](#blink-button)
+	- [Hardware Setup](#hardware-setup)
+	- [Software](#software)
+		- [Configuration: src/stm8s_conf.h](#configuration-srcstm8s_confh)
+		- [Main: src/main.c](#main-srcmainc)
 
 ## Hardware Setup
 
