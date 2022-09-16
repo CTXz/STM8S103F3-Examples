@@ -24,7 +24,7 @@ Not providing debouncing hardware may result in unstable/glitchy toggling of the
 
 ### Configuration: [src/stm8s_conf.h](src/stm8s_conf.h)
 
-Since this example makes use of GPIOs and external interrupts, we must uncomment the follwoing modules:
+Since this example makes use of GPIOs and external interrupts, we must uncomment the following modules:
 
 ```c
 #include "stm8s_exti.h"
