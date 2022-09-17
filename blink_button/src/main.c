@@ -36,8 +36,8 @@
 void main(void)
 {	
 	// Initialize GPIOs
-	GPIO_Init(BTN_PORT, BTN_PIN, GPIO_MODE_IN_PU_NO_IT);
-	GPIO_Init(LED_BUILTIN_PORT, LED_BUILTIN_PIN, GPIO_MODE_OUT_PP_LOW_FAST); // Built-in LED, Output, Push Pull, Low
+	GPIO_Init(BTN_PORT, BTN_PIN, GPIO_MODE_IN_PU_NO_IT);			 // Button: Input with pull-up, no interrupts
+	GPIO_Init(LED_BUILTIN_PORT, LED_BUILTIN_PIN, GPIO_MODE_OUT_PP_LOW_FAST); // Built-in LED: Output, Push Pull, Low level, 10MHz
 
 	while(TRUE) {
 		// Button released

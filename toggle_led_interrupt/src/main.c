@@ -31,8 +31,8 @@
 // Main routine
 void main(void)
 {
-	GPIO_Init(LED_BUILTIN_PORT, LED_BUILTIN_PIN, GPIO_MODE_OUT_PP_LOW_FAST); // Built-in LED
-	GPIO_Init(BUTTON_PORT, BUTTON_PIN, GPIO_MODE_IN_PU_IT);			 // Push button, Pull-up, Interrupt enabled
+	GPIO_Init(LED_BUILTIN_PORT, LED_BUILTIN_PIN, GPIO_MODE_OUT_PP_LOW_FAST); // Built-in LED: Output, Push Pull, Low level, 10MHz
+	GPIO_Init(BUTTON_PORT, BUTTON_PIN, GPIO_MODE_IN_PU_IT);			 // Push button: Pull-up, Interrupt enabled
 
 	EXTI_SetExtIntSensitivity(EXTI_PORT_GPIOD, EXTI_SENSITIVITY_RISE_ONLY);	 // Set interrupt sensitivity of PORTD to rising edge (button released)
 	enableInterrupts(); 							 // Enable interrupts
