@@ -15,6 +15,8 @@ The following breadboard setup is used for this example:
 
 ![setup](docs/setup.png)
 
+The exact value of the potentiometer is not important for this example, since it is simply used as a voltage divider.
+
 ## Software
 
 ### Configuration: [src/stm8s_conf.h](src/stm8s_conf.h)
@@ -69,11 +71,11 @@ Let's go through all the arguments provided to the `ADC1_Init` function:
 | -------- | ----------- |
 | `ADC1_CONVERSIONMODE_CONTINUOUS` | The ADC will run in continuous conversion mode, which means that the ADC will continuously convert the input voltage and store the result in the data registers.|
 | `POT_ADC_CHANNEL` | The ADC channel to convert. `POT_ADC_CHANNEL` is defined as `ADC1_CHANNEL_4` at the top of the main file, which is connected to GPIO PD3 (See STM8CubeMX pinout for STM8S103F3Px).|
-| `ADC1_PRESSEL_FCPU_D2` | The ADC clock prescaler. The ADC clock is the clock used by the ADC to convert the input voltage. The ADC clock is derived from the CPU/master clock. In this case, the ADC clock will be `fCPU/2`, which is `2MHz/2 = 1MHz`, since the default speed of the master clock is 2MHz.|
-| `ADC1_EXTTRIG_GPIO` | The `ADC1_Init` function requires us to provide either GPIOs or TIM1 as external trigger, however, this parameter is irrelevant since we are not using external triggers (See next parameter). |
+| `ADC1_PRESSEL_FCPU_D2` | The ADC clock prescaler. The ADC clock is derived from the CPU/master clock. In this case, the ADC clock will be `fCPU/2`, which is `2MHz/2 = 1MHz`, since the default speed of the master clock is 2MHz.|
+| `ADC1_EXTTRIG_GPIO` | Lets us trigger the ADC through GPIOs, however, this argument is irrelevant in our example since we are not using external triggers (See next parameter). |
 | `DISABLE` | Disables external triggers, thus making the previous argument useless. |
-| `ADC1_ALIGN_RIGHT` | Stores least significant 8-bits in the low ADC result register, and the most significant 2-bits in the high ADC result register. Aligning the ADC data right eases working with `ADC1_GetConversionValue()`. See section 24.8 of the [STM8S103F3 reference manual](https://www.st.com/resource/en/reference_manual/cd00190271-stm8s-advanced-arm-based-8-bit-mcus-stmicroelectronics.pdf) for more information about ADC data alignment. |
-|`POT_ADC_ADC_SCHMITTTRIG_CHANNEL`|Selects schmitt trigger for the potentiometers GPIO. The schmitt trigger is disable with the next argument.|
+| `ADC1_ALIGN_RIGHT` | Stores least significant 8-bits of the 10-bit ADC value in the low ADC result register, and the most significant 2-bits in the high ADC result register. Aligning the ADC data right eases working with `ADC1_GetConversionValue()`. See section 24.8 of the [STM8S103F3 reference manual](https://www.st.com/resource/en/reference_manual/cd00190271-stm8s-advanced-arm-based-8-bit-mcus-stmicroelectronics.pdf) for more information about ADC data alignment. |
+|`POT_ADC_ADC_SCHMITTTRIG_CHANNEL`|Selects schmitt trigger for the potentiometers GPIO. The schmitt trigger is disabled with the next argument.|
 |`DISABLE`|Disables the schmitt trigger for the potentiometers GPIO. The schmitt trigger is recommended to be disabled by the STM8 reference manual (See section 11.7.3, Table 23).|
 
 
@@ -107,4 +109,4 @@ We first tell the ADC to start conversion via the `ADC1_StartConversion()` funct
 
 > Note: Checking and setting `ADC1_FLAG_EOC` is not strictly necessary, since the ADC will continue to convert the input voltage even if we don't check or set the flag. However, it is good practice to check the flag, since it will indicate whether the ADC value has been updated.
 
-Finally, after reading the ADC value we then check if the ADC value is above half way, and if it is, we turn the LED on. Otherwise we turn the LED off.
+Finally, after reading the ADC value we then check if the ADC value is greater than half of its maximum value, and if it is, we turn the LED on. Otherwise we turn the LED off.
