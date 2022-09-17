@@ -30,7 +30,23 @@ Since this example makes use of GPIOs and ADC1, we must uncomment the following 
 
 ### Main: [src/main.c](src/main.c)
 
-The `main` function initializes the GPIOs for the built-in LED, which is connected to pin `B5`, and the potentiometer, which is connected to pin `D3`:
+At the top of the main file we first define a few constants to make the code more readable:
+
+```c
+// Built-in LED
+#define LED_BUILTIN_PORT GPIOB
+#define LED_BUILTIN_PIN  GPIO_PIN_5
+
+// Potentiometer
+#define POT_GPIO_PORT GPIOD
+#define POT_GPIO_PIN  GPIO_PIN_3
+#define POT_ADC_CHANNEL ADC1_CHANNEL_4 // Channel 4 is connected to GPIO PD3 (See STM8CubeMX pinout for STM8S103F3Px)
+#define POT_ADC_ADC_SCHMITTTRIG_CHANNEL ADC1_SCHMITTTRIG_CHANNEL4
+
+#define MAX_ADC_VAL 1023 // Max value of 10 Bit ADC
+```
+
+Next, we enter the main function, which begins by initializing the GPIOs for the built-in LED, connected to pin `B5`, and the potentiometer, which is connected to pin `D3`:
 
 ```c
 // Main routine
