@@ -1,14 +1,13 @@
-# Blink Button
+# Blink Button <!-- omit in toc -->
 
 The following example displays the state of a button on the built in LED of this [this blue STM8S103F3 devboard](https://www.aliexpress.com/item/1005004514078858.html?spm=a2g0o.productlist.main.7.5b6f20c9INeEUu&algo_pvid=e4ea4e0a-c28e-4b91-895d-2a02f8af5d90&algo_exp_id=e4ea4e0a-c28e-4b91-895d-2a02f8af5d90-3&pdp_ext_f=%7B%22sku_id%22%3A%2212000029432042609%22%7D&pdp_npi=2%40dis%21EUR%211.31%211.31%21%21%21%21%21%40211bf3f116631655842315357d071d%2112000029432042609%21sea&curPageLogUid=TCv6XDktNh7d).
 
 ## Table of Contents <!-- omit in toc -->
 
-- [Blink Button](#blink-button)
-	- [Hardware Setup](#hardware-setup)
-	- [Software](#software)
-		- [Configuration: src/stm8s_conf.h](#configuration-srcstm8s_confh)
-		- [Main: src/main.c](#main-srcmainc)
+- [Hardware Setup](#hardware-setup)
+- [Software](#software)
+	- [Configuration: src/stm8s_conf.h](#configuration-srcstm8s_confh)
+	- [Main: src/main.c](#main-srcmainc)
 
 ## Hardware Setup
 
