@@ -27,7 +27,19 @@ Since this example makes use of GPIOs, we must uncomment the GPIO module in the 
 
 ### Main: [src/main.c](src/main.c)
 
-The `main` function initializes the GPIOs for the built-in LED, which is connected to pin `B5`, and the push button, which is connected to pin `D3`:
+At the top of the main file we first define a few constants to make the code more readable:
+
+```c
+// Button
+#define BTN_PORT 	 GPIOD
+#define BTN_PIN  	 GPIO_PIN_3
+
+// Built-in LED (Pin B5, Active Low)
+#define LED_BUILTIN_PORT GPIOB
+#define LED_BUILTIN_PIN  GPIO_PIN_5
+```
+
+We then enter the `main` function where we initialize the GPIOs for the built-in LED, connected to pin `B5`, and the push button, which is connected to pin `D3`:
 
 ```c
 // Main routine
