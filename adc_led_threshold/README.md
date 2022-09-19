@@ -62,7 +62,7 @@ void main(void)
 
 The built-in LED pin is configured as output with push-pull driver and low state using the `GPIO_MODE_OUT_PP_LOW_FAST` mode.
 The potentiometer pin is configured as input with floating input and no interrupts using the `GPIO_MODE_IN_FL_NO_IT` mode.
-The floating input is recommended for ADC inputs by the STM8 reference manual. See section 11.7.3, Table 23 of the [STM8S103F3 reference manual](https://www.st.com/resource/en/reference_manual/cd00190271-stm8s-advanced-arm-based-8-bit-mcus-stmicroelectronics.pdf) for more information.
+The floating input is recommended for ADC inputs by the STM8 reference manual. See section 11.7.3, Table 23 of the [STM8S reference manual](https://www.st.com/resource/en/reference_manual/cd00190271-stm8s-advanced-arm-based-8-bit-mcus-stmicroelectronics.pdf) for more information.
 
 We then proceed to initialize the ADC1 peripheral:
 ```c
@@ -86,11 +86,11 @@ Let's go through all the arguments provided to the `ADC1_Init` function:
 | Argument | Description |
 | -------- | ----------- |
 | `ADC1_CONVERSIONMODE_CONTINUOUS` | The ADC will run in continuous conversion mode, which means that the ADC will continuously convert the input voltage and store the result in the data registers.|
-| `POT_ADC_CHANNEL` | The ADC channel to convert. `POT_ADC_CHANNEL` is defined as `ADC1_CHANNEL_4` at the top of the main file, which is connected to GPIO PD3 (See STM8CubeMX pinout for STM8S103F3Px).|
+| `POT_ADC_CHANNEL` | The ADC channel to convert. `POT_ADC_CHANNEL` is defined as `ADC1_CHANNEL_4` at the top of the main file, which is connected to pin `D3` (See STM8CubeMX pinout for STM8S103F3Px).|
 | `ADC1_PRESSEL_FCPU_D2` | The ADC clock prescaler. The ADC clock is derived from the CPU/master clock. In this case, the ADC clock will be `fCPU/2`, which is `2MHz/2 = 1MHz`, since the default speed of the master clock is 2MHz.|
 | `ADC1_EXTTRIG_GPIO` | Lets us trigger the ADC through GPIOs, however, this argument is irrelevant in our example since we are not using external triggers (See next parameter). |
 | `DISABLE` | Disables external triggers, thus making the previous argument useless. |
-| `ADC1_ALIGN_RIGHT` | Stores least significant 8-bits of the 10-bit ADC value in the low ADC result register, and the most significant 2-bits in the high ADC result register. Aligning the ADC data right eases working with `ADC1_GetConversionValue()`. See section 24.8 of the [STM8S103F3 reference manual](https://www.st.com/resource/en/reference_manual/cd00190271-stm8s-advanced-arm-based-8-bit-mcus-stmicroelectronics.pdf) for more information about ADC data alignment. |
+| `ADC1_ALIGN_RIGHT` | Stores least significant 8-bits of the 10-bit ADC value in the low ADC result register, and the most significant 2-bits in the high ADC result register. Aligning the ADC data right eases working with `ADC1_GetConversionValue()`. See section 24.8 of the [STM8S reference manual](https://www.st.com/resource/en/reference_manual/cd00190271-stm8s-advanced-arm-based-8-bit-mcus-stmicroelectronics.pdf) for more information about ADC data alignment. |
 |`POT_ADC_ADC_SCHMITTTRIG_CHANNEL`|Selects schmitt trigger for the potentiometers GPIO. The schmitt trigger is disabled with the next argument.|
 |`DISABLE`|Disables the schmitt trigger for the potentiometers GPIO. The schmitt trigger is recommended to be disabled by the STM8 reference manual (See section 11.7.3, Table 23).|
 
@@ -121,7 +121,7 @@ And finally enter our main loop where we read the ADC value and set the built-in
 
 We first tell the ADC to start conversion via the `ADC1_StartConversion()` function. This function will start the conversion process, but it will not wait for the conversion to finish. We then wait for the conversion to finish by checking the `ADC1_FLAG_EOC` (End-Of-Conversion) flag. The `ADC1_GetFlagStatus()` function will return `SET` once the ADC conversion has completed. We then get the conversion value using the `ADC1_GetConversionValue()` function. This function will return the 10-bit ADC value. We then clear the `ADC1_FLAG_EOC` flag using the `ADC1_ClearFlag()` function, so that we know when the next conversion has finished.
 
-> Note: To my knowledege, it is actually not required to continously start the conversion process with `ADC1_StartConversion()`, as the ADC will automatically start a new conversion once the previous conversion has finished in continuous mode. That being said, the datasheet recommends setting the ADON bit (which is set by `ADC1_StartConversion`) after each conversion, even in continuous mode. See the timing diagrams in section 24.5.9 of the [STM8S103F3 reference manual](https://www.st.com/resource/en/reference_manual/cd00190271-stm8s-advanced-arm-based-8-bit-mcus-stmicroelectronics.pdf) for more information.
+> Note: To my knowledege, it is actually not required to continously start the conversion process with `ADC1_StartConversion()`, as the ADC will automatically start a new conversion once the previous conversion has finished in continuous mode. That being said, the datasheet recommends setting the ADON bit (which is set by `ADC1_StartConversion`) after each conversion, even in continuous mode. See the timing diagrams in section 24.5.9 of the [STM8S reference manual](https://www.st.com/resource/en/reference_manual/cd00190271-stm8s-advanced-arm-based-8-bit-mcus-stmicroelectronics.pdf) for more information.
 
 > Note: Checking and setting `ADC1_FLAG_EOC` is not strictly necessary, since the ADC will continue to convert the input voltage even if we don't check or set the flag. However, it is good practice to check the flag, since it will indicate whether the ADC value has been updated.
 

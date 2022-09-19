@@ -39,7 +39,7 @@ void main(void)
 
 	GPIO_Init(POT_GPIO_PORT, POT_GPIO_PIN, GPIO_MODE_IN_FL_NO_IT);		  // Potentiometer: Input with floating input and no interrupts
 										  //                Floating input is recommended for ADC inputs by 
-										  // 		    the STM8 reference manual (See section 11.7.3, Table 23)
+										  // 		    the STM8S reference manual (See section 11.7.3, Table 23)
 
 	// Initialize ADC1
 	ADC1_Init(
@@ -51,7 +51,7 @@ void main(void)
 		ADC1_ALIGN_RIGHT,		 // ADC data alignment: Right (Lest significant 8 bits are in low register, most significant 2 bits in high register)
 		POT_ADC_ADC_SCHMITTTRIG_CHANNEL, // Selects schmitt trigger for channel 4
 		DISABLE				 // State to which selected schmitt trigger should be set to
-						 // Disabling schmitt trigger is recommended by the STM8 reference manual (See section 11.7.3, Table 23)
+						 // Disabling schmitt trigger is recommended by the STM8S reference manual (See section 11.7.3, Table 23)
 	);
 	
 	ADC1_Cmd(ENABLE); // Enable ADC1
