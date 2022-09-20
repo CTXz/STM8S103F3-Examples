@@ -26,7 +26,7 @@
 
 #if F_CPU != 2000000UL
 #error F_CPU set to wrong value! This example runs on 2MHz!
-#error Please set the f_cpu option the platformio.ini file to 2000000UL!
+#error Please set the board_build.f_cpu option the platformio.ini file to 2000000UL!
 #endif
 
 // Built-in LED (Pin B5, Active Low)
