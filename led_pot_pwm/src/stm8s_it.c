@@ -32,6 +32,8 @@
 /* Includes ------------------------------------------------------------------*/
 #include <stm8s_it.h>
 
+#include "global_constants.h"
+
 /** @addtogroup Template_Project
   * @{
   */
@@ -462,9 +464,10 @@ INTERRUPT_HANDLER(I2C_IRQHandler, 19)
   */
  INTERRUPT_HANDLER(ADC1_IRQHandler, 22)
  {
-    /* In order to detect unexpected events during development,
-       it is recommended to set a breakpoint on the following instruction.
-    */
+   uint16_t adc_val = ADC1_GetConversionValue();               // get ADC value
+   uint16_t duty_val = adc_val * (TIMER_PERIOD/MAX_ADC_VAL);   // Reduce the ADC value to the range of the PWM period
+   TIM2_SetCompare1(duty_val);                                 // Set the PWM duty cycle
+   ADC1_ClearFlag(ADC1_FLAG_EOC);                              // Clear the end-of-conversion flag
  }
 #endif /* (STM8S208) || (STM8S207) || (STM8AF52Ax) || (STM8AF62Ax) */
 
