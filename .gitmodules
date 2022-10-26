@@ -1,3 +1,6 @@
 [submodule "STM8S103F3-PlatformIO-Template"]
 	path = STM8S103F3-PlatformIO-Template
 	url = https://github.com/CTXz/STM8S103F3-PlatformIO-Template
+[submodule "tinyWS2812_blink/lib/TinyWS2812"]
+	path = tinyWS2812_blink/lib/TinyWS2812
+	url = https://github.com/CTXz/TinyWS2812.git
