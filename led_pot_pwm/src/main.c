@@ -69,7 +69,9 @@ void main(void)
 
 	enableInterrupts(); // Enable interrupts
 
-	while(TRUE); // Infinite loop, interrupts handle everything
+	while(TRUE) {
+		ADC1_StartConversion();
+	}
 }
 
 // See: https://community.st.com/s/question/0D50X00009XkhigSAB/what-is-the-purpose-of-define-usefullassert
