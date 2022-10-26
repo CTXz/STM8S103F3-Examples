@@ -16,15 +16,36 @@
  * 
  */
 
+/**
+  * @file blink_array.cxx
+  * @author Patrick Pedersen
+  * @date 2022-10-26
+  * @brief Blinks one or more WS2812 devices using a RGB array. 
+  * 
+  * The following example showcases how the Tiny-WS2812 library can
+  * be used on STM8S platforms to blink an entire WS2812 device in red. 
+  * In this rather memory expensive example, we achieve this by simply 
+  * creating a rgb array equal to the number of LEDs on the WS2812 device,
+  * whose values we then transmit to the device using the ws2812_tx() function.
+  *
+  * For a more memory efficient method, take a look at the blink_loop.cxx
+  * example.
+  * 
+  * @note Please ensure that the WS2812_TARGET_PLATFORM_STM8S macro
+  * is defined during compilation. This can either be done by specifying
+  * -DWS2812_TARGET_PLATFORM_STM8S in the build flags, or by uncommenting
+  * the define WS2812_TARGET_PLATFORM_STM8S directive below.
+  */
+
 #include <stm8s.h>
 
 #include <ws2812.h>
 
-#define N_LEDS 8				// Number of LEDs in the strip
-#define DATA_PORT_BASE GPIOD_BaseAddress	// Port base address of the data pin
-#define DATA_PINS {GPIO_PIN_4}			// Data pin(s) of the strip
-#define RESET_TIME 30				// Reset time in µs
-#define COLOR_ORDER grb				// Color order of the strip
+#define N_LEDS 8				///< Number of LEDs in the strip
+#define DATA_PORT_BASE GPIOD_BaseAddress	///< Port base address of the data pin
+#define DATA_PINS {GPIO_PIN_4}			///< Data pin(s) of the strip
+#define RESET_TIME 30				///< Reset time in µs
+#define COLOR_ORDER grb				///< Color order of the strip
 
 #define WAIT_LOOPS 1000000
 
