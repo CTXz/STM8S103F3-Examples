@@ -36,8 +36,6 @@ typedef enum {
  */
 inline void on_midi_rx_complete(midi_msg_t *msg)
 {
-	disableInterrupts();
-
 	uint8_t ch = channel(msg->status);
 
 	if (is_note_on(msg->status)) {
@@ -60,8 +58,6 @@ inline void on_midi_rx_complete(midi_msg_t *msg)
 			dbg_print("on_midi_rx_complete: No callback registered\n");
 		}
 	}
-
-	enableInterrupts();
 }
 
 /**
