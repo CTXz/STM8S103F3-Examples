@@ -76,6 +76,8 @@ inline void on_midi_rx_complete(midi_msg_t *msg)
  */
 inline bool status_filter(uint8_t status) {
 	return is_note_on_or_off(status);
+	// Add more filters here once more message 
+	// types are supported
 }
 
 // See header file for documentation
